@@ -8,7 +8,7 @@ CREATE TABLE `team` (
   `name` varchar(64) NOT NULL,
   `resume` varchar(255) not null default '',
   `creator` int(10) unsigned NOT NULL DEFAULT '0',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_team_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -28,7 +28,7 @@ CREATE TABLE `user` (
   `qq` varchar(16) not null default '',
   `role` tinyint not null default 0,
   `creator` int(10) unsigned NOT NULL DEFAULT 0,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
