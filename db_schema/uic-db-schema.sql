@@ -12,6 +12,8 @@ CREATE TABLE `team` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_team_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TRIGGER IF EXISTS `team_created_is_null`;
+CREATE TRIGGER `team_created_is_null` BEFORE INSERT ON `team` FOR EACH ROW SET NEW.created=NOW();
 
 /**
  * role: -1:blocked 0:normal 1:admin 2:root
@@ -32,6 +34,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TRIGGER IF EXISTS `user_created_is_null`;
+CREATE TRIGGER `user_created_is_null` BEFORE INSERT ON `user` FOR EACH ROW SET NEW.created=NOW();
 
 drop table if exists `rel_team_user`;
 CREATE TABLE `rel_team_user` (
