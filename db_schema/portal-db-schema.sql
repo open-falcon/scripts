@@ -170,3 +170,18 @@ CREATE TABLE `cluster` (
   `creator`     VARCHAR(255)   NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE =InnoDB;
+
+/**
+  *  agent autoupdate table 
+ */
+DROP TABLE IF EXISTS `agent_version`;
+CREATE TABLE `agent_version` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `hostname` varchar(255) NOT NULL DEFAULT '',
+  `version` varchar(255) NOT NULL DEFAULT '',
+  `status` int(4) unsigned NOT NULL DEFAULT '0',
+  `current_version` varchar(255) NOT NULL DEFAULT '',
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_agent_hostname` (`hostname`)
+) ENGINE=InnoDB;
